@@ -1,14 +1,14 @@
 
-# React + Firebase Authentication + Express API + Google Sheets
+# My Portofolio
 
-A basic login page made with react which supports Authentication Google account.
+A basic Home page made with react which supports Google Speedshet and Api Key Blogger V3.
 
 
 ## Features
 
-- Login with Phone number
-- Login with email & password
-- Login with Google account
+- Home Page
+- Api Key BloggerV3
+- Google Speedshet
 
 
 
@@ -34,45 +34,32 @@ Start the server
 ```
 
 ----------------------------------------------------------------
-## Install Chakra-UI
+## env Express
 
-instal Icon Chakra-ui/icons
-
-```bash
-  npm install @chakra-ui/icons
-```
 
 instal Libraray Chakra-UI
 
 ```bash
-  npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
-```
-----------------------------------------------------------------
-## Install  Express googleapis (Middleware API)
-
-new Folder Server
-
-```bash
-  mkdir server
-```
-install Server
-
-```bash
-  npm init -y
-```
-install librarry Express googleapis
-```bash
-  npm install express googleapis cors
+  SPREADSHEET_ID="1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+BLOG_ID="1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+API_KEY="AIzaSyDxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GOOGLE_TYPE="service_xxxxxx"
+GOOGLE_PROJECT_ID="sampelxxxxxt"
+GOOGLE_PRIVATE_KEY_ID="4f7deexxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx\n-----END PRIVATE KEY-----\n"
+GOOGLE_CLIENT_EMAIL="webiste-appank@xxxxx.iam.gserviceaccount.com"
+GOOGLE_CLIENT_ID="1050553053xxx"
+GOOGLE_AUTH_URI="https://accounts.google.com/o/xxx/xxxxh"
+GOOGLE_TOKEN_URI="https://oauth2.googleapis.com/xxxx"
+GOOGLE_AUTH_PROVIDER_X509_CERT_URL="https://www.googleapis.com/xxxx/xxx/xxxxs"
+GOOGLE_CLIENT_X509_CERT_URL="https://www.googleapis.com/robot/v1/metadata/x509/webiste-appank%40xxxxx.iam.gserviceaccount.com"
+GOOGLE_UNIVERSE_DOMAIN="googleapis.com"
 ```
 
-Run Server (Server runing http://localhost:5000)
-```bash
-  node index.js
-```
 
 ## Tech Stack
 
-**Client:** React, JavaScript, Chakra UI
+React, JavaScript, Chakra UI
 
-**Authentication** Firebase
+**Webiste** Portofolio
 
