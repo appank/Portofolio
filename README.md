@@ -17,7 +17,7 @@ A basic Home page made with react which supports Google Speedshet and Api Key Bl
 Clone the project
 
 ```bash
-  git clone https://github.com/NinadVyas/AuthFirebase.git
+  git clone https://github.com/appank/Portofolio.git
 ```
 
 
