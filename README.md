@@ -37,7 +37,7 @@ Start the server
 ## env Express
 
 
-instal Libraray Chakra-UI
+.env
 
 ```bash
   SPREADSHEET_ID="1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
