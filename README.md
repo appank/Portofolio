@@ -59,7 +59,7 @@ GOOGLE_UNIVERSE_DOMAIN="googleapis.com"
 
 ## Tech Stack
 
-React, JavaScript, Chakra UI
+React, ORC , JavaScript, Chakra UI
 
 **Webiste** Portofolio
 
