@@ -5,19 +5,19 @@ import Topbar from "./Topbar";
 const DashboardLayout = ({ children }) => {
   return (
     <Flex direction="column" minH="100vh" bg="gray.50">
-
+       
       {/* Badge Section */}
-      <Stack direction="row" spacing={2} p={4}>
+      <Box bg="teal.400">
+<Stack direction="row" spacing={2} p={4}>
         <Badge>Disciplined</Badge>
         <Badge colorScheme="green">Consitent</Badge>
     <Badge colorScheme="red">Error</Badge>
     <Badge colorScheme="purple">Repeat</Badge>
+        
       </Stack>
+      </Box> 
       {/* Topbar */}
       <Topbar />
-
-      
-
       {/* Konten halaman */}
       <Box flex="1" px={{ base: 4, md: 8 }} py={4}>
         {children}

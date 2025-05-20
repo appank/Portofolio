@@ -1,10 +1,11 @@
-import { IconButton, Wrap, WrapItem, Box, Flex, Image, Text, Stack, Badge, HStack, Circle, VStack, SimpleGrid, Button, ButtonGroup, FormControl, FormLabel, Input, Textarea, useToast } from "@chakra-ui/react";
+import { IconButton, Wrap, WrapItem, Box, Flex, useBreakpointValue, Image, Text, Stack, Badge, HStack, Circle, VStack, SimpleGrid, Button, ButtonGroup, FormControl, FormLabel, Input, Textarea, useToast } from "@chakra-ui/react";
 import DashboardLayout from "../components/DashboardLayout";
 import { FaInstagram,  FaLinkedin, FaTiktok, FaGithub } from "react-icons/fa"; 
 import { useEffect, useState } from "react";
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   const [formData, setFormData] = useState({
     name: "",
@@ -552,6 +553,8 @@ const colorSchemes = ["teal", "blue", "green", "purple", "orange", "pink", "red"
       {/* Kiri: Nama & Email */}
       <Box flex="1">
         <Stack spacing={4}>
+          <Box mb={4}>
+            </Box>
           <FormControl>
             <FormLabel>Name<span style={{ color: 'red' }}>*</span></FormLabel>
             <Input
@@ -571,11 +574,7 @@ const colorSchemes = ["teal", "blue", "green", "purple", "orange", "pink", "red"
                 onChange={handleChange}
               />
           </FormControl>
-        </Stack>
-      </Box>
 
-      {/* Kanan: Address */}
-      <Box flex="1">
         <FormControl>
           <FormLabel>Catatan<span style={{ color: 'red' }}>*</span></FormLabel>
           <Textarea
@@ -585,11 +584,25 @@ const colorSchemes = ["teal", "blue", "green", "purple", "orange", "pink", "red"
               onChange={handleChange}
             />
         </FormControl>
+        </Stack>
       </Box>
+
+      {/* Kanan: Address */}
+    
+      <Box flex="1"pl={10}>
+        {!isMobile && (<Image
+          src="https://raw.githubusercontent.com/Mr-Shadow-Cyber/imgporto/refs/heads/main/Flux_Dev_A_stylized_futuristic_3D_robot_mascot_with_a_sleek_sm_2-removebg-preview.png"
+          boxSize={{ base: "250px", md: "350px" }}
+          
+         
+          alt="Baso Arfan Efendy"
+          mb={{ base: 6, md: 0 }}
+        />
+        )}</Box>
     </Flex>
 
     {/* Tombol di tengah */}
-    <Box textAlign="left" mt={8}>
+    <Box textAlign="left" mt={1}>
     <Button colorScheme="teal" onClick={handleSubmit}>
         Submit
       </Button>
@@ -606,7 +619,7 @@ const colorSchemes = ["teal", "blue", "green", "purple", "orange", "pink", "red"
     >
       <Stack direction="row" justify="center" spacing={2} p={4}>
         <Badge colorScheme="blue">#React</Badge>
-    <Badge colorScheme="green">#Express.js</Badge>
+    <Badge colorScheme="green">#Express</Badge>
     <Badge colorScheme="teal">#Chakra UI</Badge>
       </Stack>
       <Text fontSize="sm" color="gray.500">
