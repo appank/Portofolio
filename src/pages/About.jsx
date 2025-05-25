@@ -4,18 +4,18 @@ import DashboardLayout from "../components/DashboardLayout";
 export default function About() {
   return (
     <DashboardLayout>
-      <Heading fontSize="5xl" fontWeight="bold" mb={4}>
+      <Heading className="animate__animated animate__fadeIn" fontSize="5xl" fontWeight="bold" mb={4}>
         " <Text as="span" bgGradient="linear(to-r, cyan.400, teal.500)" bgClip="text">About Me</Text>
       </Heading>
-      <Text fontSize="lg" lineHeight="tall">
-        I am a software developer working as a freelancer, handling various software development projects based on client needs.
-        I have experience in designing, developing, and implementing efficient and innovative software solutions.
-        With expertise in various technologies and programming languages, I focus on building high-quality applications that meet industry standards.
+      <Text className="animate__animated animate__fadeIn" fontSize="lg" textAlign={{ base: "left", md: "left" }} lineHeight="tall">
+        I graduated from Universitas Dipa Makassar with a degree in Informatics Engineering in 2021. After graduation, I began my career as an Android application developer and successfully published several personal apps on the Google Play Store, generating revenue through Google AdMob. I actively developed and maintained these applications until 2024, when my developer account was eventually closed by Google.
       </Text>
-      <Heading fontSize="2xl" fontWeight="bold" mt={8} mb={4}>
+      <Text className="animate__animated animate__fadeIn" fontSize="lg" textAlign={{ base: "left", md: "left" }} lineHeight="tall" mt={4}>
+        Currently, I am focused on continuously learning and enhancing my skills, particularly in web and Android development as a Full Stack Developer. In addition, I take on freelance projects to gain more hands-on experience and expand my professional network.</Text>
+      <Heading className="animate__animated animate__fadeIn" fontSize="2xl" fontWeight="bold" mt={8} mb={4}>
         " <Text as="span" bgGradient="linear(to-r, cyan.400, teal.500)" bgClip="text">Tech Stack</Text>
       </Heading>
-      <SimpleGrid columns={{ base: 5, md: 9 }} spacing={4} 
+      <SimpleGrid className="animate__animated animate__fadeInUp" columns={{ base: 5, md: 9 }} spacing={4} 
       maxW="800px"
       mx="auto"
       >

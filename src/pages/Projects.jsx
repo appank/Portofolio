@@ -1,11 +1,23 @@
-import { Box, Heading, SimpleGrid, Image, Link, Button, Badge, HStack, ButtonGroup, Text, useColorModeValue, } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  SimpleGrid,
+  Image,
+  Button,
+  Text,
+  HStack,
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+  Stack,
+
+} from '@chakra-ui/react';
 import DashboardLayout from "../components/DashboardLayout";
 import { useEffect, useState } from "react";
 export default function Projects() {
   const [products, setProducts] = useState([]);
-  const bgColor = useColorModeValue("#0E1111", "white");
-  // Warna-warna badge Chakra UI yang umum
-  const colorSchemes = ["teal", "blue", "green", "purple", "orange", "pink", "red", "cyan", "yellow"];
+  const [loading, setLoading] = useState(true);
+  // effect dan pengguna api key blogger v3
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -15,8 +27,10 @@ export default function Projects() {
         }
         const data = await response.json();
         setProducts(data);
+        setLoading(false); // Tambahkan ini
       } catch (error) {
         console.error("Error fetching products:", error);
+        setLoading(false); // Pastikan loading false juga saat error
       }
     };
 
@@ -28,19 +42,46 @@ export default function Projects() {
         " <Text as="span" bgGradient="linear(to-r, cyan.400, teal.500)" bgClip="text">Projects</Text>
       </Heading>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={3}>
-  {products.map((item) => (
-    <Box
-      key={item.id}
-      p={4}
-      borderWidth="1px"
-      borderColor="teal.600"
-      boxShadow="md"
-      borderRadius="xl"
-      _hover={{ boxShadow: "xl", transform: "scale(1.03)", transition: "0.3s" }}
-      height="100%"
-      display="flex"
-      flexDirection="column"
-    >
+        {loading
+          ? // Tampilkan Skeleton jika loading
+          Array.from({ length: 4 }).map((_, idx) => (
+            <Box
+              key={idx}
+              p={4}
+              borderWidth="1px"
+              borderColor="teal.600"
+              boxShadow="md"
+              minW={"300px"}
+              maxW={"300px"}
+              borderRadius="xl"
+              height="100%"
+            >
+              <HStack width="full" mb={4}>
+                <SkeletonText noOfLines={4} width="100%" />
+              </HStack>
+              <Skeleton height="200px" mb={4} />
+              <SkeletonText noOfLines={2} width="70%" />
+
+            </Box>
+          ))
+          : // Jika tidak loading, tampilkan data asli
+          products.map((item) => (
+            <Box
+              key={item.id}
+              p={4}
+              borderWidth="1px"
+              borderColor="teal.600"
+              boxShadow="md"
+              borderRadius="xl"
+              _hover={{
+                boxShadow: "xl",
+                transform: "scale(1.03)",
+                transition: "0.3s",
+              }}
+              height="100%"
+              display="flex"
+              flexDirection="column"
+            >
       <Text color="gray.500" fontSize="xl" fontWeight="bold">
         {item.title}
       </Text>
