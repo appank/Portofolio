@@ -1,14 +1,13 @@
 
 # My Portofolio
 
-A basic Home page made with react which supports Google Speedshet and Api Key Blogger V3.
+A basic Home page made with react which supports  Api Key Blogger V3.
 
 
 ## Features
 
-- Home Page
+- CSS
 - Api Key BloggerV3
-- Google Speedshet
 
 
 
