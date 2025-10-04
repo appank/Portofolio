@@ -4,6 +4,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import Topbar from "./Topbar";
+import { FaWhatsapp } from "react-icons/fa";
 
 const DashboardLayout = ({ children }) => {
   const bgColor = useColorModeValue("#0E1111", "white");
@@ -23,17 +24,17 @@ const DashboardLayout = ({ children }) => {
           width: "50px",       // buat lingkaran
           height: "50px",      // buat lingkaran
           borderRadius: "50%", // bulat sempurna
-          backgroundColor: "white",
+          backgroundColor: "#25D366",  // warna hijau WhatsApp
           boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
           zIndex: 1000,
           display: "flex",            // untuk center ikon
           alignItems: "center",       // untuk center ikon
           justifyContent: "center",   // untuk center ikon
           textDecoration: "none",
-          color: "inherit",
+          color: "white",
         }}
       >
-        <i className="ci ci-whatsapp ci-2x"></i>
+        <FaWhatsapp size={30} />
       </a>
       <Box
         flex="1"

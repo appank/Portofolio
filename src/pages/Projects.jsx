@@ -10,13 +10,31 @@ import {
   SkeletonCircle,
   SkeletonText,
   Stack,
-
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Link,
 } from '@chakra-ui/react';
 import DashboardLayout from "../components/DashboardLayout";
 import { useEffect, useState } from "react";
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 export default function Projects() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // Fungsi untuk membuka modal dengan data project
+  const handleOpenModal = (project) => {
+    setSelectedProject(project);
+    onOpen();
+  };
+
   // effect dan pengguna api key blogger v3
   useEffect(() => {
     const fetchProducts = async () => {
@@ -82,62 +100,124 @@ export default function Projects() {
               display="flex"
               flexDirection="column"
             >
-      <Text color="gray.500" fontSize="xl" fontWeight="bold">
-        {item.title}
-      </Text>
-
-      <Text
-        mt={2}
-        fontSize="sm"
-        color="gray.500"
-        textAlign="initial"
-        sx={{
-          display: "-webkit-box",
-          WebkitLineClamp: 4,
-          WebkitBoxOrient: "vertical",
-          overflow: "hidden",
-        }}
-      >
-        {
-          item.content
-            .replace(/<a[^>]*>.*?<\/a>/g, '')
-            .replace(/<[^>]*>?/gm, '')
-            .replace(/&[^;\s]+;/g, '')
-            .slice(0, 500)
-        }...
-      </Text>
-
+              {/* Gambar di bagian atas */}
       {item.images?.length > 0 && (
         <Image
           src={item.images[0].url}
           alt={item.title}
           boxSize="auto"
+                  borderRadius="lg"
           mx="auto"
-          my={4}
+                  mb={3}
+                  width="100%"
+                  height="200px"
+                  objectFit="cover"
         />
       )}
+
+              {/* Judul di bawah gambar */}
+              <Text color="gray.500" fontSize="xl" fontWeight="bold" textAlign="center">
+                {item.title}
+              </Text>
 
       {/* Spacer agar tombol terdorong ke bawah */}
       <Box flex="1" />
 
-      {item.hasLink && (
-        <Button
-          as="a"
-          href={item.link}
-          target="_blank"
-          borderColor="teal.600"
-          color="teal.600"
-          size="sm"
-          variant="outline"
-          width="full"
-          mt={4}
-        >
-          Visit Link
-        </Button>
-      )}
+              <Button
+                onClick={() => handleOpenModal(item)}
+                borderColor="teal.600"
+                color="teal.600"
+                size="sm"
+                variant="outline"
+                width="full"
+                mt={4}
+              >
+                Visit Link
+              </Button>
     </Box>
   ))}
 </SimpleGrid>
+
+      {/* Modal Dialog untuk menampilkan detail project */}
+      <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+        <ModalOverlay backdropFilter="blur(5px)" />
+        <ModalContent bg="gray.800" color="white" borderRadius="xl" mx={4}>
+          <ModalHeader fontSize="2xl" fontWeight="bold">
+            {selectedProject?.title}
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {selectedProject?.images?.length > 0 && (
+              <Image
+                src={selectedProject.images[0].url}
+                alt={selectedProject.title}
+                borderRadius="lg"
+                mb={4}
+                width="100%"
+                objectFit="cover"
+              />
+            )}
+            <Text fontSize="md" color="gray.300" mb={4}>
+              {selectedProject?.content
+                .replace(/<a[^>]*>.*?<\/a>/g, '')
+                .replace(/<[^>]*>?/gm, '')
+                .replace(/&[^;\s]+;/g, '')}
+            </Text>
+            <Box
+              p={3}
+              bg="gray.700"
+              borderRadius="md"
+              wordBreak="break-all"
+            >
+              <Text fontSize="sm" color="teal.300" fontWeight="bold" mb={1}>
+                URL:
+              </Text>
+              {selectedProject?.hasLink && selectedProject?.link ? (
+                <Link
+                  href={selectedProject.link}
+                  isExternal
+                  color="cyan.400"
+                  fontSize="sm"
+                  textDecoration="underline"
+                >
+                  {selectedProject.link} <ExternalLinkIcon mx="2px" />
+                </Link>
+              ) : (
+                <Text fontSize="sm" color="gray.400" fontStyle="italic">
+                  URL tidak tersedia untuk project ini
+                </Text>
+              )}
+            </Box>
+          </ModalBody>
+
+          <ModalFooter>
+            {selectedProject?.hasLink && selectedProject?.link ? (
+              <Button
+                as="a"
+                href={selectedProject.link}
+                target="_blank"
+                colorScheme="teal"
+                mr={3}
+                rightIcon={<ExternalLinkIcon />}
+              >
+                Buka Link
+              </Button>
+            ) : (
+              <Button
+                colorScheme="teal"
+                mr={3}
+                isDisabled
+                opacity={0.5}
+              >
+                Link Tidak Tersedia
+              </Button>
+            )}
+            <Button variant="ghost" onClick={onClose} color="gray.300">
+              Tutup
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
 
     </DashboardLayout>
   );
