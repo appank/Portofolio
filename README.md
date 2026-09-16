@@ -1,51 +1,49 @@
+# basoarfan.
 
-# My Portofolio
+Personal portfolio built with React, Tailwind CSS, React Router, React Icons, and Animate.css.
 
-A basic Home page made with react which supports  Api Key Blogger V3.
-
-
-## Features
-
-- CSS
-- Api Key BloggerV3
-
-
-
-## Run Locally
-
-Clone the project
+## Run locally
 
 ```bash
-  git clone https://github.com/appank/Portofolio.git
+npm install
+npm run dev
 ```
 
+On PowerShell, use `npm.cmd` if script execution is restricted.
 
-Install dependencies
+## Build and test
 
 ```bash
-  npm install
+npm run build
+npm test -- --watchAll=false --runInBand
 ```
 
-Start the server
+## Projects
 
-```bash
-  npm run start
+Edit `src/data/projects.js` to add or update projects. Four projects use images imported from `src/assets/project1.png` through `project4.png`. Clicking a card opens a responsive detail dialog inspired by `webtest.html`. All data is loaded locally, without a backend or API credentials.
+
+Example entry:
+
+```js
+const projects = [
+  {
+    id: "my-project",
+    title: "My Project",
+    category: "Web Application",
+    description: "A plain-text description of the project.",
+    images: [{ url: "/images/my-project.png" }],
+    link: "https://example.com",
+    features: ["A feature of the project"],
+    summary: ["A short project highlight"],
+    technologies: ["React", "Tailwind CSS"],
+  },
+];
+
+export default projects;
 ```
 
-----------------------------------------------------------------
-## css
+Import images from `src/assets/`, or put public images in `public/images/`. Only `id` and `title` are required; the other fields are optional. Projects without a link show a disabled link button.
 
+## Styling
 
-.css animate
-
-```bash
-https://animate.style/#usage
-```
-
-
-## Tech Stack
-
-React, ORC , JavaScript, Chakra UI
-
-**Webiste** Portofolio
-
+The color palette is defined in `tailwind.config.js`. Light/dark theme preference is saved in browser storage.
