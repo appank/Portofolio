@@ -1,5 +1,5 @@
 import DashboardLayout from "../components/DashboardLayout";
-import { FaTiktok } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -16,16 +16,28 @@ export default function Home() {
         <p className="animate__animated animate__fadeIn text-lg leading-relaxed">
           Professional Trader & Investor | Software Developer | Building Web Applications through Vibe Coding and Continuous Learning.
         </p>
-        <a
-          href="https://www.tiktok.com/@laimondev"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="TikTok @laimondev"
-          className="animate__animated animate__fadeIn mt-4 inline-flex items-center gap-2 rounded-sm text-lg hover:text-accent-orange"
-        >
-          <FaTiktok aria-hidden="true" className="h-5 w-5" />
-          <span>@laimondev</span>
-        </a>
+        <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href="https://github.com/appank"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub @appank"
+            className="animate__animated animate__fadeIn inline-flex items-center gap-2 rounded-sm text-lg hover:text-accent-orange"
+          >
+            <FaGithub aria-hidden="true" className="h-5 w-5" />
+            <span>@appank</span>
+          </a>
+          <a
+            href="https://id.linkedin.com/in/baso-arfan-efendy-2570111b3"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn @basoarfanefendy"
+            className="animate__animated animate__fadeIn inline-flex items-center gap-2 rounded-sm text-lg hover:text-accent-orange"
+          >
+            <FaLinkedin aria-hidden="true" className="h-5 w-5" />
+            <span>@basoarfanefendy</span>
+          </a>
+        </div>
       </section>
     </DashboardLayout>
   );
